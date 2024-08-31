@@ -1,0 +1,141 @@
+Assignment 1:
+
+mysql> use studentmanagementsystem;
+Database changed
+
+Task1:  
+
+mysql> select * from student where DateOfBirth = '2009-06-16';
++-----------+-----------+----------+-------------+--------+-----------------------+------------+
+| StudentID | FirstName | LastName | DateOfBirth | Gender | Email                 | Phone      |
++-----------+-----------+----------+-------------+--------+-----------------------+------------+
+| 20        | Piya      | Koel     | 2009-06-16  | male   | piya.koel@example.com | 1234536573 |
++-----------+-----------+----------+-------------+--------+-----------------------+------------+
+1 row in set (0.00 sec)
+
+Task2: 
+
+mysql> select * from student where FirstName LIKE 'A%' or  FirstName LIKE 'J%';
++-----------+-----------+----------+-------------+--------+------------------------+------------+
+| StudentID | FirstName | LastName | DateOfBirth | Gender | Email                  | Phone      |
++-----------+-----------+----------+-------------+--------+------------------------+------------+
+| 2         | Juya      | Noel     | 2009-09-16  | female | juya.noel@example.com  | 1234535553 |
+| 29        | Aiya      | Koel     | 2010-06-16  | male   | aiya.koel@example.com  | 1234536553 |
+| 6         | Aiua      | Nagar    | 2008-06-16  | male   | aiua.nagar@example.com | 1236536553 |
++-----------+-----------+----------+-------------+--------+------------------------+------------+
+3 rows in set (0.00 sec)
+
+Task3: 
+
+mysql> select *  from student where FirstName <> 'Alice' and email like '%@example.com';
++-----------+-----------+----------+-------------+--------+---------------------------+------------+
+| StudentID | FirstName | LastName | DateOfBirth | Gender | Email
+          | Phone      |
++-----------+-----------+----------+-------------+--------+---------------------------+------------+
+| 14        | Lily      | Brown    | 2001-05-22  | female | lily.brown@example.com    | 1234567891 |
+| 15        | Lotus     | Green    | 1999-11-05  | female | lotus.green@example.com   | 1234567892 |
+| 16        | Mary      | Johnson  | 1998-07-30  | female | mary.johnson@example.com  | 1234567893 |
+| 17        | Red       | Rose     | 2002-03-10  | female | red.rose@example.com      | 1234567894 |
+| 18        | Mari      | Gold     | 2001-12-12  | female | mari.gold@example.com     | 1234567895 |
+| 19        | Mary      | Williams | 1997-08-19  | female | mary.williams@example.com | 1234567896 |
+| 2         | Juya      | Noel     | 2009-09-16  | female | juya.noel@example.com     | 1234535553 |
+| 20        | Piya      | Koel     | 2009-06-16  | male   | piya.koel@example.com     | 1234536573 |
+| 29        | Aiya      | Koel     | 2010-06-16  | male   | aiya.koel@example.com     | 1234536553 |
+| 6         | Aiua      | Nagar    | 2008-06-16  | male   | aiua.nagar@example.com    | 1236536553 |
++-----------+-----------+----------+-------------+--------+---------------------------+------------+
+10 rows in set (0.00 sec)
+
+
+
+
+
+
+ Assignment 2:
+
+
+
+mysql> use employee;
+Database changed
+
+Task1:
+
+mysql> create table Person( PersonID int Primary key,FirstName varchar(255),
+LastName varchar(255), age int);
+Query OK, 0 rows affected (0.04 sec)
+
+Task2:
+
+mysql> desc employee;
++------------+---------------+------+-----+---------+-------+
+| Field      | Type          | Null | Key | Default | Extra |
++------------+---------------+------+-----+---------+-------+
+| emp_id     | int           | NO   | PRI | NULL    |       |
+| first_name | varchar(30)   | YES  |     | NULL    |       |
+| last_name  | varchar(30)   | YES  |     | NULL    |       |
+| age        | int           | YES  |     | NULL    |       |
+| email      | varchar(100)  | YES  |     | NULL    |       |
+| Salary     | decimal(10,2) | YES  |     | NULL    |       |
+| Department | varchar(30)   | YES  |     | NULL    |       |
++------------+---------------+------+-----+---------+-------+
+7 rows in set (0.00 sec)
+
+
+Task3:
+
+mysql> INSERT INTO Person (PersonID, FirstName, LastName, Age) VALUES (1, 'John', 'Doe', 30), (2, 'Jane', 'Smith', 25), (3, 'Alice', 'Johnson', 28), (4, 'Bob', 'Brown', 35), (5, 'Charlie', 'Davis', 40);
+Query OK, 5 rows affected (0.01 sec)
+Records: 5  Duplicates: 0  Warnings: 0 
+
+
+Task4:
+
+mysql> alter table employee drop column email,drop column Salary,drop column
+ Department;
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+
+Task5:
+
+mysql> select * from person union select * from employee;
++----------+-----------+----------+------+
+| PersonID | FirstName | LastName | age  |
++----------+-----------+----------+------+
+|        1 | John      | Doe      |   30 |
+|        2 | Jane      | Smith    |   25 |
+|        3 | Alice     | Johnson  |   28 |
+|        4 | Bob       | Brown    |   35 |
+|        5 | Charlie   | Davis    |   40 |
+|        1 | Alen      | Woex     |   23 |
+|        2 | Bow       | Ronx     |   23 |
+|        3 | Carey     | Eleon    |   23 |
+|        4 | Elex      | Froen    |   23 |
+|        5 | Diana     | Prince   |   25 |
+|        6 | Clark     | Kent     |   31 |
+|        7 | Bruce     | Wayne    |   36 |
+|        8 | Tony      | Stark    |   41 |
++----------+-----------+----------+------+
+13 rows in set (0.00 sec)
+
+
+
+
+
+
+
+ Lab 1:
+
+mysql> use studentmanagementsystem;
+Database changed
+
+mysql> SELECT s.StudentID, s.FirstName, s.LastName, e.EnrollmentID, e.CourseID FROM Student s INNER JOIN Enrollment e ON s.StudentID = e.StudentID;
++-----------+-----------+----------+--------------+----------+
+| StudentID | FirstName | LastName | EnrollmentID | CourseID |
++-----------+-----------+----------+--------------+----------+
+| 14        | Lily      | Brown    | ENR002       | kcs101   |
+| 15        | Lotus     | Green    | ENR003       | kcs102   |
+| 16        | Mary      | Johnson  | ENR004       | kai103   |
+| 17        | Red       | Rose     | ENR005       | kcs101   |
++-----------+-----------+----------+--------------+----------+
+4 rows in set (0.00 sec)
+

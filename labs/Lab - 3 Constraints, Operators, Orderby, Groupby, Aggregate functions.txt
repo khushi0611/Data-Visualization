@@ -1,0 +1,269 @@
+ Lab 1: Database Schema:
+
+mysql> create table BankAccount( account_id int primary key, account_holder_name varchar(60), account_balance varchar(30));
+Query OK, 0 rows affected (0.07 sec)
+
+ Task 1: Insert Data
+
+mysql> INSERT INTO BankAccount (account_id, account_holder_name, account_balance) VALUES (101, 'John Doe', '1500.75'), (102, 'Jane Smith', '2340.50'), (103, 'Alice Johnson', '1250.00'), (104, 'Bob Brown', '3200.90'), (105, 'Charlie Davis', '2750.30');
+Query OK, 5 rows affected (0.01 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+ 
+ Task 2: Retrieving Data
+
+mysql> select account_holder_name, account_balance from BankAccount;
++---------------------+-----------------+
+| account_holder_name | account_balance |
++---------------------+-----------------+
+| John Doe            | 1500.75         |
+| Jane Smith          | 2340.50         |
+| Alice Johnson       | 1250.00         |
+| Bob Brown           | 3200.90         |
+| Charlie Davis       | 2750.30         |
++---------------------+-----------------+
+5 rows in set (0.00 sec)
+
+ Task 3: Filtering Data
+
+mysql> INSERT INTO BankAccount (account_id, account_holder_name, account_balance) VALUES (106, 'Emily White', '22000.50'), (107, 'David Miller', '48500.75'), (108, 'Sophia Green', '37500.25'), (109, 'James Wilson', '41500.90'), (110, 'Olivia Brown', '29500.00');
+Query OK, 5 rows affected (0.01 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+
+mysql> select account_holder_name, account_balance from BankAccount where account_balance > 30000;
++---------------------+-----------------+
+| account_holder_name | account_balance |
++---------------------+-----------------+
+| David Miller        | 48500.75        |
+| Sophia Green        | 37500.25        |
+| James Wilson        | 41500.90        |
++---------------------+-----------------+
+3 rows in set (0.00 sec)
+
+ Task 4: Updating Data 
+
+mysql> update bankaccount set account_balance = 34000.00 where account_id=101;
+Query OK, 1 row affected (0.03 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+
+
+
+
+
+ Lab 1
+Database Schema:
+
+
+mysql> use studentmanagementsystem;
+Database changed
+mysql> show tables;
++-----------------------------------+
+| Tables_in_studentmanagementsystem |
++-----------------------------------+
+| course                            |
+| enrollment                        |
+| instructor                        |
+| score                             |
+| student                           |
++-----------------------------------+
+5 rows in set (0.03 sec)
+
+mysql> select * from score;
++---------+----------+-----------+------------+----------------+
+| ScoreID | CourseID | StudentID | DateOfExam | CreditObtained |
++---------+----------+-----------+------------+----------------+
+| SCR002  | kcs101   | 14        | 2024-05-12 |              3 |
+| SCR003  | kcs102   | 15        | 2024-05-14 |              2 |
+| SCR004  | kai103   | 16        | 2024-05-16 |              4 |
+| SCR005  | kcs101   | 17        | 2024-05-18 |              3 |
++---------+----------+-----------+------------+----------------+
+4 rows in set (0.00 sec)
+
+
+mysql> select * from student;
++-----------+-----------+----------+-------------+--------+---------------------------+------------+
+| StudentID | FirstName | LastName | DateOfBirth | Gender | Email                     | Phone      |
++-----------+-----------+----------+-------------+--------+---------------------------+------------+
+| 14        | Lily      | Brown    | 2001-05-22  | female | lily.brown@example.com    | 1234567891 |
+| 15        | Lotus     | Green    | 1999-11-05  | female | lotus.green@example.com   | 1234567892 |
+| 16        | Mary      | Johnson  | 1998-07-30  | female | mary.johnson@example.com  | 1234567893 |
+| 17        | Red       | Rose     | 2002-03-10  | female | red.rose@example.com      | 1234567894 |
+| 18        | Mari      | Gold     | 2001-12-12  | female | mari.gold@example.com     | 1234567895 |
+| 19        | Mary      | Williams | 1997-08-19  | female | mary.williams@example.com | 1234567896 |
++-----------+-----------+----------+-------------+--------+---------------------------+------------+
+6 rows in set (0.00 sec)
+
+mysql> SELECT s.StudentID, s.FirstName, s.LastName, s.DateOfBirth, s.Gender, s.Email, s.Phone FROM student s JOIN score sc ON s.StudentID = sc.StudentID ORDER BY s.LastName ASC;
++-----------+-----------+----------+-------------+--------+--------------------------+------------+
+| StudentID | FirstName | LastName | DateOfBirth | Gender | Email                    | Phone      |
++-----------+-----------+----------+-------------+--------+--------------------------+------------+
+| 14        | Lily      | Brown    | 2001-05-22  | female | lily.brown@example.com   | 1234567891 |
+| 15        | Lotus     | Green    | 1999-11-05  | female | lotus.green@example.com  | 1234567892 |
+| 16        | Mary      | Johnson  | 1998-07-30  | female | mary.johnson@example.com | 1234567893 |
+| 17        | Red       | Rose     | 2002-03-10  | female | red.rose@example.com     | 1234567894 |
++-----------+-----------+----------+-------------+--------+--------------------------+------------+
+4 rows in set (0.00 sec)
+
+
+
+ Lab 2
+Database Schema:
+
+mysql> SELECT Gender, COUNT(*) AS NumberOfStudents FROM student GROUP BY Gender;
++--------+------------------+
+| Gender | NumberOfStudents |
++--------+------------------+
+| female |                6 |
++--------+------------------+
+1 row in set (0.01 sec)
+
+
+
+
+
+Lab 1:
+ Database Schema
+
+
+mysql> use Employee;
+Database changed
+
+mysql> alter table employee add column Salary decimal(10,2), add column Department varchar(30);
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> UPDATE employee SET Salary = 50000, Department = 'HR' WHERE emp_id = 1;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> UPDATE employee SET Salary = 55000, Department = 'Finance' WHERE emp_id = 2;
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> UPDATE employee SET Salary = 60000, Department = 'Marketing' WHERE emp_id = 3;
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> UPDATE employee SET Salary = 62000, Department = 'IT' WHERE emp_id = 4;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> UPDATE employee SET Salary = 65000, Department = 'Admin' WHERE emp_id = 5;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> UPDATE employee SET Salary = 67000, Department = 'Sales' WHERE emp_id = 6;
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> UPDATE employee SET Salary = 70000, Department = 'Legal' WHERE emp_id = 7;
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> UPDATE employee SET Salary = 72000, Department = 'Engineering' WHERE emp_id = 8;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from employee;
++--------+------------+-----------+------+--------------------------+----------+-------------+
+| emp_id | first_name | last_name | age  | email                    | Salary   | Department  |
++--------+------------+-----------+------+--------------------------+----------+-------------+
+|      1 | Alen       | Woex      |   23 | alen_woex@example.com    | 50000.00 | HR          |
+|      2 | Bow        | Ronx      |   23 | bow_ronx@example.com     | 55000.00 | Finance     |
+|      3 | Carey      | Eleon     |   23 | carey_eleon@example.com  | 60000.00 | Marketing   |
+|      4 | Elex       | Froen     |   23 | elex_froen@example.com   | 62000.00 | IT          |
+|      5 | Diana      | Prince    |   25 | diana_prince@example.com | 65000.00 | Admin       |
+|      6 | Clark      | Kent      |   31 | clark_kent@example.com   | 67000.00 | Sales       |
+|      7 | Bruce      | Wayne     |   36 | bruce_wayne@example.com  | 70000.00 | Legal       |
+|      8 | Tony       | Stark     |   41 | tony_stark@example.com   | 72000.00 | Engineering |
++--------+------------+-----------+------+--------------------------+----------+-------------+
+8 rows in set (0.00 sec)
+
+mysql> select * from employee where Salary>50000 and Department = 'IT';
++--------+------------+-----------+------+------------------------+----------+------------+
+| emp_id | first_name | last_name | age  | email                  | Salary   | Department |
++--------+------------+-----------+------+------------------------+----------+------------+
+|      4 | Elex       | Froen     |   23 | elex_froen@example.com | 62000.00 | IT         |
++--------+------------+-----------+------+------------------------+----------+------------+
+1 row in set (0.00 sec)
+
+
+
+
+Lab 2:
+Database Schema
+
+mysql> show databases;
++-------------------------+
+| Database                |
++-------------------------+
+| ecommerce               |
+| emergencycontact        |
+| employee                |
+| information_schema      |
+| mysql                   |
+| performance_schema      |
+| record                  |
+| studentmanagementsystem |
+| sys                     |
++-------------------------+
+9 rows in set (0.00 sec)
+
+mysql> use ecommerce;
+Database changed
+mysql> show tables;
+Empty set (0.00 sec)
+
+mysql> CREATE TABLE product (ProductID INT PRIMARY KEY, ProductName VARCHAR(100), Category VARCHAR(50), Price DECIMAL(10, 2));
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> INSERT INTO product (ProductID, ProductName, Category, Price) VALUES (1, 'Smartphone', 'Electronics', 69999.00), (2, 'Laptop', 'Electronics', 119999.00), (3, 'Headphones', 'Electronics', 4999.00), (4, 'Smartwatch', 'Electronics', 29999.00), (5, 'Television', 'Electronics', 64999.00), (6, 'Refrigerator', 'Appliances', 67999.00), (7, 'Washing Machine', 'Appliances', 54999.00);
+Query OK, 7 rows affected (0.01 sec)
+Records: 7  Duplicates: 0  Warnings: 0
+
+mysql> SELECT * FROM product WHERE Category = 'Electronics' OR Price < 70000;
++-----------+-----------------+-------------+-----------+
+| ProductID | ProductName     | Category    | Price     |
++-----------+-----------------+-------------+-----------+
+|         1 | Smartphone      | Electronics |  69999.00 |
+|         2 | Laptop          | Electronics | 119999.00 |
+|         3 | Headphones      | Electronics |   4999.00 |
+|         4 | Smartwatch      | Electronics |  29999.00 |
+|         5 | Television      | Electronics |  64999.00 |
+|         6 | Refrigerator    | Appliances  |  67999.00 |
+|         7 | Washing Machine | Appliances  |  54999.00 |
++-----------+-----------------+-------------+-----------+
+7 rows in set (0.00 sec)
+
+
+
+
+
+ Lab 3.
+
+mysql> use employee;
+Database changed
+
+mysql> SELECT department, AVG(Salary) AS average_salary from employee group by department;
++-------------+----------------+
+| department  | average_salary |
++-------------+----------------+
+| HR          |   50000.000000 |
+| Finance     |   55000.000000 |
+| Marketing   |   60000.000000 |
+| IT          |   62000.000000 |
+| Admin       |   65000.000000 |
+| Sales       |   67000.000000 |
+| Legal       |   70000.000000 |
+| Engineering |   72000.000000 |
++-------------+----------------+
+8 rows in set (0.01 sec)
+
+
+
+
+
+
+
+

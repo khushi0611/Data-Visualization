@@ -1,0 +1,261 @@
+Lab 1. Use the Database and table from ILT1 lab. Insert 5 records in each table and retrieve data from all tables and display.
+
+mysql> INSERT INTO course VALUES ('kai103', 'PPS', 4), ('kcs101', 'EVS', 3), ('kcs102', 'GK', 2), ('kcs103', 'Math', 4), ('kcs104', 'English', 3);
+Query OK, 5 rows affected (0.01 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> INSERT INTO student (StudentID, FirstName, LastName, DateOfBirth, Gender, Email, Phone) VALUES (13, 'Rhea', 'Smith', '2000-01-15', 'female', 'rhea.smith@example.com', '1234567890'), (14, 'Lily', 'Brown', '2001-05-22', 'female', 'lily.brown@example.com', '1234567891'), (15, 'Lotus', 'Green', '1999-11-05', 'female', 'lotus.green@example.com', '1234567892'), (16, 'Mary', 'Johnson', '1998-07-30', 'female', 'mary.johnson@example.com', '1234567893'), (17, 'Red', 'Rose', '2002-03-10', 'female', 'red.rose@example.com', '1234567894'), (18, 'Mari', 'Gold', '2001-12-12', 'female', 'mari.gold@example.com', '1234567895'), (19, 'Mary', 'Williams', '1997-08-19', 'female', 'mary.williams@example.com', '1234567896');
+Query OK, 7 rows affected (0.01 sec)
+Records: 7  Duplicates: 0  Warnings: 0
+
+mysql> INSERT INTO instructor (InstructorID, FirstName, LastName, Email) VALUES ('INS001', 'John', 'Doe', 'john.doe@example.com'), ('INS002', 'Jane', 'Smith', 'jane.smith@example.com'), ('INS003', 'Michael', 'Johnson', 'michael.johnson@example.com'), ('INS004', 'Emily', 'Davis', 'emily.davis@example.com'), ('INS005', 'David', 'Brown', 'david.brown@example.com');
+Query OK, 5 rows affected (0.01 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> INSERT INTO score (ScoreID, CourseID, StudentID, DateOfExam, CreditObtained) VALUES ('SCR001', 'kai103', 13, '2024-05-10', 4), ('SCR002', 'kcs101', 14, '2024-05-12', 3), ('SCR003', 'kcs102', 15, '2024-05-14', 2), ('SCR004', 'kai103', 16, '2024-05-16', 4), ('SCR005', 'kcs101', 17, '2024-05-18', 3);
+Query OK, 5 rows affected (0.01 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> INSERT INTO enrollment (EnrollmentID, EnrollmentDate, StudentID, CourseID, InstructorId) VALUES ( 'ENR001', '2024-06-01', 13, 'kai103', 'INS001'), ( 'ENR002', '2024-06-02', 14, 'kcs101', 'INS002'), ( 'ENR003', '2024-06-03', 15, 'kcs102', 'INS003'), ( 'ENR004', '2024-06-04', 16, 'kai103', 'INS001'), ( 'ENR005', '2024-06-05', 17, 'kcs101', 'INS002');
+Query OK, 5 rows affected (0.01 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+
+mysql> select * from course;
++----------+--------------+---------+
+| CourseID | Course_title | credits |
++----------+--------------+---------+
+| kai103   | PPS          |       4 |
+| kcs101   | EVS          |       3 |
+| kcs102   | GK           |       2 |
+| kcs103   | Math         |       4 |
+| kcs104   | English      |       3 |
++----------+--------------+---------+
+5 rows in set (0.00 sec)
+
+mysql> select * from enrollment;
++--------------+----------------+-----------+----------+--------------+
+| EnrollmentID | EnrollmentDate | StudentID | CourseID | InstructorId |
++--------------+----------------+-----------+----------+--------------+
+| ENR001       | 2024-06-01     | 13        | kai103   | INS001       |
+| ENR002       | 2024-06-02     | 14        | kcs101   | INS002       |
+| ENR003       | 2024-06-03     | 15        | kcs102   | INS003       |
+| ENR004       | 2024-06-04     | 16        | kai103   | INS001       |
+| ENR005       | 2024-06-05     | 17        | kcs101   | INS002       |
++--------------+----------------+-----------+----------+--------------+
+5 rows in set (0.00 sec)
+
+mysql> select * from instructor;
++--------------+-----------+----------+-----------------------------+
+| InstructorID | FirstName | LastName | Email                       |
++--------------+-----------+----------+-----------------------------+
+| INS001       | John      | Doe      | john.doe@example.com        |
+| INS002       | Jane      | Smith    | jane.smith@example.com      |
+| INS003       | Michael   | Johnson  | michael.johnson@example.com |
+| INS004       | Emily     | Davis    | emily.davis@example.com     |
+| INS005       | David     | Brown    | david.brown@example.com     |
++--------------+-----------+----------+-----------------------------+
+5 rows in set (0.00 sec)
+
+mysql> select * from score;
++---------+----------+-----------+------------+----------------+
+| ScoreID | CourseID | StudentID | DateOfExam | CreditObtained |
++---------+----------+-----------+------------+----------------+
+| SCR001  | kai103   | 13        | 2024-05-10 |              4 |
+| SCR002  | kcs101   | 14        | 2024-05-12 |              3 |
+| SCR003  | kcs102   | 15        | 2024-05-14 |              2 |
+| SCR004  | kai103   | 16        | 2024-05-16 |              4 |
+| SCR005  | kcs101   | 17        | 2024-05-18 |              3 |
++---------+----------+-----------+------------+----------------+
+5 rows in set (0.00 sec)
+
+mysql> select * from student;
++-----------+-----------+----------+-------------+--------+---------------------------+------------+
+| StudentID | FirstName | LastName | DateOfBirth | Gender | Email
+          | Phone      |
++-----------+-----------+----------+-------------+--------+---------------------------+------------+
+| 13        | Rhea      | Smith    | 2000-01-15  | female | rhea.smith@example.com    | 1234567890 |
+| 14        | Lily      | Brown    | 2001-05-22  | female | lily.brown@example.com    | 1234567891 |
+| 15        | Lotus     | Green    | 1999-11-05  | female | lotus.green@example.com   | 1234567892 |
+| 16        | Mary      | Johnson  | 1998-07-30  | female | mary.johnson@example.com  | 1234567893 |
+| 17        | Red       | Rose     | 2002-03-10  | female | red.rose@example.com      | 1234567894 |
+| 18        | Mari      | Gold     | 2001-12-12  | female | mari.gold@example.com     | 1234567895 |
+| 19        | Mary      | Williams | 1997-08-19  | female | mary.williams@example.com | 1234567896 |
++-----------+-----------+----------+-------------+--------+---------------------------+------------+
+7 rows in set (0.00 sec)
+
+
+
+
+ChatGPT Exercise
+
+
+mysql> create database emergencyContact;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> use emergencyContact;
+Database changed
+mysql> CREATE TABLE Employees (EmployeeID INT PRIMARY KEY, FirstName VARCHAR(50), LastName VARCHAR(50), DateOfBirth DATE, Email VARCHAR(100), Phone VARCHAR(20));
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> CREATE TABLE EmergencyContacts (ContactID INT PRIMARY KEY, EmployeeID INT, ContactName VARCHAR(100),Relationship VARCHAR(50), ContactPhone VARCHAR(20),FOREIGN KEY (EmployeeID) REFERENCES Employees(EmployeeID));
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> CREATE TABLE EmergencyContactTypes ( TypeID INT PRIMARY KEY, TypeName VARCHAR(50));
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> CREATE TABLE EmployeeEmergencyContactTypes (EmployeeID INT, TypeID INT, FOREIGN KEY (EmployeeID) REFERENCES Employees(EmployeeID), FOREIGN KEY (TypeID) REFERENCES EmergencyContactTypes(TypeID),PRIMARY KEY (EmployeeID, TypeID));
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> INSERT INTO Employees (EmployeeID, FirstName, LastName, DateOfBirth, Email, Phone) VALUES (1, 'John', 'Doe', '1985-02-15', 'john.doe@example.com', '1234567890'), (2, 'Jane', 'Smith', '1990-07-22', 'jane.smith@example.com', '1234567891');
+Query OK, 2 rows affected (0.01 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> INSERT INTO EmergencyContactTypes (TypeID, TypeName) VALUES (1, 'Family'),(2, 'Friend');
+Query OK, 2 rows affected (0.01 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> INSERT INTO EmployeeEmergencyContactTypes (EmployeeID, TypeID) VALUES (1, 1),(2, 2);
+Query OK, 2 rows affected (0.01 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> select * from Employees;
++------------+-----------+----------+-------------+------------------------+------------+
+| EmployeeID | FirstName | LastName | DateOfBirth | Email                  | Phone      |
++------------+-----------+----------+-------------+------------------------+------------+
+|          1 | John      | Doe      | 1985-02-15  | john.doe@example.com   | 1234567890 |
+|          2 | Jane      | Smith    | 1990-07-22  | jane.smith@example.com | 1234567891 |
++------------+-----------+----------+-------------+------------------------+------------+
+2 rows in set (0.00 sec)
+
+mysql> select * from EmergencyContactTypes;
++--------+----------+
+| TypeID | TypeName |
++--------+----------+
+|      1 | Family   |
+|      2 | Friend   |
++--------+----------+
+2 rows in set (0.00 sec)
+
+mysql> select * from EmployeeEmergencyContactTypes;
++------------+--------+
+| EmployeeID | TypeID |
++------------+--------+
+|          1 |      1 |
+|          2 |      2 |
++------------+--------+
+2 rows in set (0.00 sec)
+
+
+
+
+
+Lab 2. For this assignment, please use the same tables created in your previous lab session.
+ Task 1:
+
+
+mysql> use studentmanagementsystem;
+Database changed
+
+mysql> update student SET Email = 'rhea_Smith@example.com' WHERE FirstName = 'Rhea' AND LastName = 'Smith';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update instructor SET Email = 'janesmith@example.com' WHERE FirstName
+ = 'Jane' AND LastName = 'Smith';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+
+ Task 2:
+
+
+mysql> DELETE FROM enrollment WHERE StudentID IN (SELECT StudentID FROM student WHERE LastName = 'Smith');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> DELETE FROM score WHERE StudentID IN (SELECT StudentID FROM student W
+HERE LastName = 'Smith');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> delete from student WHERE LastName = 'Smith';
+Query OK, 1 row affected (0.01 sec)
+
+
+ Task 3:
+
+
+mysql> select * from student where FirstName like 'L%';
++-----------+-----------+----------+-------------+--------+-------------------------+------------+
+| StudentID | FirstName | LastName | DateOfBirth | Gender | Email
+        | Phone      |
++-----------+-----------+----------+-------------+--------+-------------------------+------------+
+| 14        | Lily      | Brown    | 2001-05-22  | female | lily.brown@example.com  | 1234567891 |
+| 15        | Lotus     | Green    | 1999-11-05  | female | lotus.green@example.com | 1234567892 |
++-----------+-----------+----------+-------------+--------+-------------------------+------------+
+2 rows in set (0.01 sec)
+
+
+
+Lab 3.Database Schema:
+
+mysql> create database Employee;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> use Employee;
+Database changed
+
+mysql> create table employee(emp_id int Primary key, first_name varchar(30), last_name varchar(30), age int, email varchar(100));
+Query OK, 0 rows affected (0.04 sec)
+
+  Task 1: Insert Data
+
+mysql> INSERT INTO employee (EmployeeID, FirstName, LastName, Age, Email) VALUES (1, 'Alen', 'Woex', 23, 'alen_woex@example.com'), (2, 'Bow', 'Ronx', 23, 'bow_ronx@example.com'), (3, 'Carey', 'Eleon', 23, 'carey_eleon@example.com'), (4, 'Elex', 'Froen', 23, 'elex_froen@example.com'), (5, 'Diana', 'Prince', 25, 'diana_prince@example.com'), (6, 'Clark', 'Kent', 30, 'clark_kent@example.com'), (7, 'Bruce', 'Wayne', 35, 'bruce_wayne@example.com'), (8, 'Tony', 'Stark', 40, 'tony_stark@example.com');
+Query OK, 8 rows affected (0.01 sec)
+Records: 8  Duplicates: 0  Warnings: 0
+
+ Task 2: Retrieving Data 
+
+mysql> select first_name,last_name from employee;
++------------+-----------+
+| first_name | last_name |
++------------+-----------+
+| Alen       | Woex      |
+| Bow        | Ronx      |
+| Carey      | Eleon     |
+| Elex       | Froen     |
+| Diana      | Prince    |
+| Clark      | Kent      |
+| Bruce      | Wayne     |
+| Tony       | Stark     |
++------------+-----------+
+8 rows in set (0.00 sec)
+
+Task 3: Filtering Data
+
+mysql> select first_name,last_name,age from employee where age>30;
++------------+-----------+------+
+| first_name | last_name | age  |
++------------+-----------+------+
+| Bruce      | Wayne     |   35 |
+| Tony       | Stark     |   40 |
++------------+-----------+------+
+2 rows in set (0.00 sec)
+
+   Task 4: Updating Data
+
+mysql> update employee set age= age+1 where age>25;
+Query OK, 3 rows affected (0.01 sec)
+Rows matched: 3  Changed: 3  Warnings: 0
+
+
+
+
+ ChatGPT Exercise
+
+
+
+mysql> UPDATE employee SET Salary = Salary * 1.10 WHERE JobTitle = 'Manager';
+
+
+
+

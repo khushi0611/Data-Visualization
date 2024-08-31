@@ -1,0 +1,103 @@
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| anudip             |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+5 rows in set (0.01 sec)
+
+mysql> create database StudentManagementSystem;
+Query OK, 1 row affected (0.04 sec)
+
+mysql> use StudentManagementSystem;
+Database changed
+
+mysql> create table Student(StudentID varchar(10) primary key, FirstName varchar(30),LastName varchar(40),DateOfBirth date, Gender enum('male','female'),Email varchar(50),Phone int);
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> desc student;
++-------------+-----------------------+------+-----+---------+-------+
+| Field       | Type                  | Null | Key | Default | Extra |
++-------------+-----------------------+------+-----+---------+-------+
+| StudentID   | varchar(10)           | NO   | PRI | NULL    |       |
+| FirstName   | varchar(30)           | YES  |     | NULL    |       |
+| LastName    | varchar(40)           | YES  |     | NULL    |       |
+| DateOfBirth | date                  | YES  |     | NULL    |       |
+| Gender      | enum('male','female') | YES  |     | NULL    |       |
+| Email       | varchar(50)           | YES  |     | NULL    |       |
+| Phone       | int                   | YES  |     | NULL    |       |
++-------------+-----------------------+------+-----+---------+-------+
+7 rows in set (0.04 sec)
+
+mysql> create table Course (CourseID varchar(65) primary key, Course_title varchar(75),credits int);
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> desc course;
++--------------+-------------+------+-----+---------+-------+
+| Field        | Type        | Null | Key | Default | Extra |
++--------------+-------------+------+-----+---------+-------+
+| CourseID     | varchar(65) | NO   | PRI | NULL    |       |
+| Course_title | varchar(75) | YES  |     | NULL    |       |
+| credits      | int         | YES  |     | NULL    |       |
++--------------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> create table Instructor(InstructorID varchar(30) primary key,FirstName varchar(40),LastName varchar(55),Email varchar(50));
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> desc instructor;
++--------------+-------------+------+-----+---------+-------+
+| Field        | Type        | Null | Key | Default | Extra |
++--------------+-------------+------+-----+---------+-------+
+| InstructorID | varchar(30) | NO   | PRI | NULL    |       |
+| FirstName    | varchar(40) | YES  |     | NULL    |       |
+| LastName     | varchar(55) | YES  |     | NULL    |       |
+| Email        | varchar(50) | YES  |     | NULL    |       |
++--------------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> create table Enrollment(EnrollmentID varchar(45) primary key,EnrollmentDate date,StudentID varchar(45),CourseID varchar(45),InstructorId varchar(45),foreign key(StudentID) references Student(StudentID),foreign key(CourseID) references Course(CourseID),foreign key(InstructorID) references Instructor(InstructorID));
+Query OK, 0 rows affected (0.09 sec)
+
+mysql> show columns from enrollment;
++----------------+-------------+------+-----+---------+-------+
+| Field          | Type        | Null | Key | Default | Extra |
++----------------+-------------+------+-----+---------+-------+
+| EnrollmentID   | varchar(45) | NO   | PRI | NULL    |       |
+| EnrollmentDate | date        | YES  |     | NULL    |       |
+| StudentID      | varchar(45) | YES  | MUL | NULL    |       |
+| CourseID       | varchar(45) | YES  | MUL | NULL    |       |
+| InstructorId   | varchar(45) | YES  | MUL | NULL    |       |
++----------------+-------------+------+-----+---------+-------+
+5 rows in set (0.03 sec)
+
+mysql> create table Score (ScoreID varchar(65) primary key,CourseID varchar(55),StudentID varchar(65),DateOfExam date,CreditObtained tinyint,foreign key(StudentID) references Student(StudentID),foreign key(CourseID) references Course(CourseID));
+Query OK, 0 rows affected (0.08 sec)
+
+mysql> show columns from score;
++----------------+-------------+------+-----+---------+-------+
+| Field          | Type        | Null | Key | Default | Extra |
++----------------+-------------+------+-----+---------+-------+
+| ScoreID        | varchar(65) | NO   | PRI | NULL    |       |
+| CourseID       | varchar(55) | YES  | MUL | NULL    |       |
+| StudentID      | varchar(65) | YES  | MUL | NULL    |       |
+| DateOfExam     | date        | YES  |     | NULL    |       |
+| CreditObtained | tinyint     | YES  |     | NULL    |       |
++----------------+-------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> show tables;
++-----------------------------------+
+| Tables_in_studentmanagementsystem |
++-----------------------------------+
+| course                            |
+| enrollment                        |
+| instructor                        |
+| score                             |
+| student                           |
++-----------------------------------+
+5 rows in set (0.00 sec)

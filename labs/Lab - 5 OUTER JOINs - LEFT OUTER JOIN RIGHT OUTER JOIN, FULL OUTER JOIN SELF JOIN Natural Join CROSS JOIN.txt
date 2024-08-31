@@ -1,0 +1,84 @@
+ Lab:
+
+
+
+Task1:
+
+mysql> SELECT s.StudentID, s.FirstName, s.LastName, e.EnrollmentID, e.CourseID FROM Enrollment e RIGHT OUTER JOIN Student s ON e.StudentID = s.StudentID;
++-----------+-----------+----------+--------------+----------+
+| StudentID | FirstName | LastName | EnrollmentID | CourseID |
++-----------+-----------+----------+--------------+----------+
+| 14        | Lily      | Brown    | ENR002       | kcs101   |
+| 15        | Lotus     | Green    | ENR003       | kcs102   |
+| 16        | Mary      | Johnson  | ENR004       | kai103   |
+| 17        | Red       | Rose     | ENR005       | kcs101   |
+| 18        | Mari      | Gold     | NULL         | NULL     |
+| 19        | Mary      | Williams | NULL         | NULL     |
+| 2         | Juya      | Noel     | NULL         | NULL     |
+| 20        | Piya      | Koel     | NULL         | NULL     |
+| 29        | Aiya      | Koel     | NULL         | NULL     |
+| 6         | Aiua      | Nagar    | NULL         | NULL     |
++-----------+-----------+----------+--------------+----------+
+10 rows in set (0.00 sec)
+
+
+Task2:
+
+mysql> SELECT s.StudentID, s.FirstName, s.Email, e.EnrollmentID, e.CourseID FROM Student s LEFT JOIN Enrollment e ON s.StudentID = e.StudentID;
++-----------+-----------+---------------------------+--------------+----------+
+| StudentID | FirstName | Email                     | EnrollmentID | CourseID |
++-----------+-----------+---------------------------+--------------+----------+
+| 14        | Lily      | lily.brown@example.com    | ENR002       | kcs101   |
+| 15        | Lotus     | lotus.green@example.com   | ENR003       | kcs102   |
+| 16        | Mary      | mary.johnson@example.com  | ENR004       | kai103   |
+| 17        | Red       | red.rose@example.com      | ENR005       | kcs101   |
+| 18        | Mari      | mari.gold@example.com     | NULL         | NULL     |
+| 19        | Mary      | mary.williams@example.com | NULL         | NULL     |
+| 2         | Juya      | juya.noel@example.com     | NULL         | NULL     |
+| 20        | Piya      | piya.koel@example.com     | NULL         | NULL     |
+| 29        | Aiya      | aiya.koel@example.com     | NULL         | NULL     |
+| 6         | Aiua      | aiua.nagar@example.com    | NULL         | NULL     |
++-----------+-----------+---------------------------+--------------+----------+
+10 rows in set (0.00 sec)
+
+
+
+
+
+
+lab:
+
+Task1:
+
+mysql> SELECT s.StudentID, s.FirstName, s.LastName, e.EnrollmentID, e.CourseID FROM Student s LEFT JOIN Enrollment e ON s.StudentID = e.StudentID UNION SELECT s.StudentID, s.FirstName, s.LastName, e.EnrollmentID, e.CourseID FROM Enrollment e LEFT JOIN Student s ON e.StudentID = s.StudentID;
++-----------+-----------+----------+--------------+----------+
+| StudentID | FirstName | LastName | EnrollmentID | CourseID |
++-----------+-----------+----------+--------------+----------+
+| 14        | Lily      | Brown    | ENR002       | kcs101   |
+| 15        | Lotus     | Green    | ENR003       | kcs102   |
+| 16        | Mary      | Johnson  | ENR004       | kai103   |
+| 17        | Red       | Rose     | ENR005       | kcs101   |
+| 18        | Mari      | Gold     | NULL         | NULL     |
+| 19        | Mary      | Williams | NULL         | NULL     |
+| 2         | Juya      | Noel     | NULL         | NULL     |
+| 20        | Piya      | Koel     | NULL         | NULL     |
+| 29        | Aiya      | Koel     | NULL         | NULL     |
+| 6         | Aiua      | Nagar    | NULL         | NULL     |
++-----------+-----------+----------+--------------+----------+
+10 rows in set (0.00 sec)
+
+
+
+Task2:
+
+mysql> SELECT * FROM Student NATURAL JOIN Enrollment;
++-----------+-----------+----------+-------------+--------+--------------------------+------------+--------------+----------------+----------+--------------+
+| StudentID | FirstName | LastName | DateOfBirth | Gender | Email                    | Phone      | EnrollmentID | EnrollmentDate | CourseID | InstructorId |
++-----------+-----------+----------+-------------+--------+--------------------------+------------+--------------+----------------+----------+--------------+
+| 14        | Lily      | Brown    | 2001-05-22  | female | lily.brown@example.com   | 1234567891 | ENR002       | 2024-06-02     | kcs101   | INS002       |
+| 15        | Lotus     | Green    | 1999-11-05  | female | lotus.green@example.com  | 1234567892 | ENR003       | 2024-06-03     | kcs102   | INS003       |
+| 16        | Mary      | Johnson  | 1998-07-30  | female | mary.johnson@example.com | 1234567893 | ENR004       | 2024-06-04     | kai103   | INS001       |
+| 17        | Red       | Rose     | 2002-03-10  | female | red.rose@example.com     | 1234567894 | ENR005       | 2024-06-05     | kcs101   | INS002       |
++-----------+-----------+----------+-------------+--------+--------------------------+------------+--------------+----------------+----------+--------------+
+4 rows in set (0.00 sec)
+

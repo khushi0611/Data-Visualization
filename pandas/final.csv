@@ -1,0 +1,5 @@
+sno,empid,empname,designation,gender,basepay,rating
+1,TCS001,Abhay,Hr,male,27174,2.0
+2,TCS002,Bhavya,Admin,male,35862,3.5
+3,TCS003,Chavi,Manager,female,38462,4.0
+4,TCS004,Devansh,Exe,male,46483,5.0

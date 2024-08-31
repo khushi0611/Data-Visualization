@@ -1,0 +1,54 @@
+Enter password: ****
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 11
+Server version: 8.0.39 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2024, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases;
++-------------------------+
+| Database                |
++-------------------------+
+| ecommerce               |
+| emergencycontact        |
+| employee                |
+| information_schema      |
+| mysql                   |
+| performance_schema      |
+| record                  |
+| studentmanagementsystem |
+| sys                     |
++-------------------------+
+9 rows in set (0.01 sec)
+
+mysql> create database ecom_analysis;
+Query OK, 1 row affected (0.02 sec)
+
+mysql> use ecom_analysis;
+Database changed
+mysql> CREATE TABLE product (product_id INT PRIMARY KEY, product_name VARCHAR(100), category VARCHAR(50), sub_category VARCHAR(50), original_price DECIMAL(10, 2), selling_price DECIMAL(10, 2), stock INT);
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> INSERT INTO product (product_id, product_name, category, sub_category, original_price, selling_price, stock) VALUES (1, 'Smartphone A1', 'Electronics', 'Mobile', 50000.00, 47000.00, 100), (2, 'Smartphone B2', 'Electronics', 'Mobile', 60000.00, 55000.00, 80), (3, 'Laptop C3', 'Electronics', 'Laptop', 75000.00, 70000.00, 50), (4, 'Laptop D4', 'Electronics', 'Laptop', 85000.00, 80000.00, 60), (5, 'Smartwatch E5', 'Electronics', 'Wearable', 20000.00, 18000.00, 120), (6, 'Smartwatch F6', 'Electronics', 'Wearable', 22000.00, 20000.00, 110), (7, 'Headphones G7', 'Electronics', 'Accessories', 5000.00, 4500.00, 150), (8, 'Headphones H8', 'Electronics', 'Accessories', 5500.00, 5000.00, 140), (9, 'Television I9', 'Electronics', 'Home Appliances', 65000.00, 60000.00, 30), (10, 'Television J10', 'Electronics', 'Home Appliances', 70000.00, 65000.00, 35), (11, 'Refrigerator K11', 'Home Appliances', 'Kitchen', 45000.00, 42000.00, 40), (12, 'Refrigerator L12', 'Home Appliances', 'Kitchen', 48000.00, 45000.00, 38), (13, 'Washing Machine M13', 'Home Appliances', 'Laundry', 30000.00, 28000.00, 45), (14, 'Washing Machine N14', 'Home Appliances', 'Laundry', 32000.00, 30000.00, 42), (15, 'Microwave O15', 'Home Appliances', 'Kitchen', 15000.00, 14000.00, 60), (16, 'Microwave P16', 'Home Appliances', 'Kitchen', 16000.00, 15000.00, 58), (17, 'Blender Q17', 'Home Appliances', 'Kitchen', 5000.00, 4500.00, 70), (18, 'Blender R18', 'Home Appliances', 'Kitchen', 5500.00, 5000.00, 68), (19, 'Vacuum Cleaner S19', 'Home Appliances', 'Cleaning', 12000.00, 11000.00, 55), (20, 'Vacuum Cleaner T20', 'Home Appliances', 'Cleaning', 12500.00, 11500.00, 53), (21, 'Air Conditioner U21', 'Home Appliances', 'Cooling', 40000.00, 38000.00, 25), (22, 'Air Conditioner V22', 'Home Appliances', 'Cooling', 42000.00, 40000.00, 23), (23, 'Heater W23', 'Home Appliances', 'Heating', 15000.00, 14000.00, 30), (24, 'Heater X24', 'Home Appliances', 'Heating', 16000.00, 15000.00, 28), (25, 'Fan Y25', 'Home Appliances', 'Cooling', 3000.00, 2800.00, 100), (26, 'Fan Z26', 'Home Appliances', 'Cooling', 3200.00, 3000.00, 95), (27, 'Speaker A27', 'Electronics', 'Audio', 10000.00, 9500.00, 80), (28, 'Speaker B28', 'Electronics', 'Audio', 10500.00, 10000.00, 78), (29, 'Camera C29', 'Electronics', 'Photography', 45000.00, 42000.00, 50), (30, 'Camera D30', 'Electronics', 'Photography', 48000.00, 45000.00, 48), (31, 'Printer E31', 'Electronics', 'Office', 20000.00, 19000.00, 70), (32, 'Printer F32', 'Electronics', 'Office', 22000.00, 21000.00, 68), (33, 'Monitor G33', 'Electronics', 'Computer', 25000.00, 24000.00, 60), (34, 'Monitor H34', 'Electronics', 'Computer', 27000.00, 26000.00, 58), (35, 'Tablet I35', 'Electronics', 'Mobile', 30000.00, 28000.00, 100), (36, 'Tablet J36', 'Electronics', 'Mobile', 32000.00, 30000.00, 95), (37, 'Router K37', 'Electronics', 'Networking', 5000.00, 4800.00, 150), (38, 'Router L38', 'Electronics', 'Networking', 5500.00, 5300.00, 140), (39, 'Smart Home Hub M39', 'Electronics', 'Smart Home', 8000.00, 7500.00, 90), (40, 'Smart Home Hub N40', 'Electronics', 'Smart Home', 8500.00, 8000.00, 88), (41, 'Security Camera O41', 'Electronics', 'Security', 15000.00, 14000.00, 75), (42, 'Security Camera P42', 'Electronics', 'Security', 16000.00, 15000.00, 72), (43, 'Smart Light Q43', 'Electronics', 'Smart Home', 3000.00, 2800.00, 120), (44, 'Smart Light R44', 'Electronics', 'Smart Home', 3200.00, 3000.00, 115), (45, 'Fitness Tracker S45', 'Electronics', 'Wearable', 7000.00, 6500.00, 130), (46, 'Fitness Tracker T46', 'Electronics', 'Wearable', 7500.00, 7000.00, 125), (47, 'Gaming Console U47', 'Electronics', 'Gaming', 45000.00, 42000.00, 40), (48, 'Gaming Console V48', 'Electronics', 'Gaming', 48000.00, 45000.00, 38), (49, 'Drone W49', 'Electronics', 'Photography', 60000.00, 57000.00, 30), (50, 'Drone X50', 'Electronics', 'Photography', 65000.00, 62000.00, 28);
+Query OK, 50 rows affected (0.01 sec)
+Records: 50  Duplicates: 0  Warnings: 0
+
+mysql> CREATE TABLE customer (customer_id INT PRIMARY KEY, name VARCHAR(100), city VARCHAR(50), email VARCHAR(100), phone_no VARCHAR(15), address VARCHAR(255), pin_code VARCHAR(10));
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> INSERT INTO customer (customer_id, name, city, email, phone_no, address, pin_code) VALUES (1, 'John Doe', 'New York', 'john.doe@example.com', '1234567890', '123 Main St, Apt 4B', '10001'), (2, 'Jane Smith', 'Los Angeles', 'jane.smith@example.com', '0987654321', '456 Elm St, Apt 12C', '90001'), (3, 'Alice Johnson', 'Chicago', 'alice.johnson@example.com', '1122334455', '789 Oak St, Apt 3A', '60601'), (4, 'Bob Brown', 'Houston', 'bob.brown@example.com', '2233445566', '101 Pine St, Apt 8D', '77001'), (5, 'Charlie Davis', 'Phoenix', 'charlie.davis@example.com', '3344556677', '202 Maple St, Apt 5E', '85001'), (6, 'Eva Green', 'Philadelphia', 'eva.green@example.com', '4455667788', '303 Birch St, Apt 9F', '19101'), (7, 'Frank Harris', 'San Antonio', 'frank.harris@example.com', '5566778899', '404 Cedar St, Apt 2G', '78201'), (8, 'Grace Lee', 'San Diego', 'grace.lee@example.com', '6677889900', '505 Spruce St, Apt 6H', '92101'), (9, 'Hank Wilson', 'Dallas', 'hank.wilson@example.com', '7788990011', '606 Fir St, Apt 7I', '75201'), (10, 'Ivy Taylor', 'San Jose', 'ivy.taylor@example.com', '8899001122', '707 Redwood St, Apt 1J', '95101');
+Query OK, 10 rows affected (0.01 sec)
+Records: 10  Duplicates: 0  Warnings: 0
+
+mysql> CREATE TABLE order_details (order_id INT PRIMARY KEY, customer_id INT, product_id INT, quantity INT, total_price DECIMAL(10, 2), payment_mode VARCHAR(50), order_date DATE, order_status VARCHAR(50));
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> INSERT INTO order_details (order_id, customer_id, product_id, quantity, total_price, payment_mode, order_date, order_status) VALUES (1, 1, 1, 2, 94000.00, 'Credit Card', '2024-08-01', 'Shipped'), (2, 2, 3, 1, 70000.00, 'Debit Card', '2024-08-02', 'Delivered'), (3, 3, 5, 3, 54000.00, 'PayPal', '2024-08-03', 'Pending'), (4, 4, 7, 1, 4500.00, 'Cash on Delivery', '2024-08-04', 'Cancelled'), (5, 5, 9, 1, 60000.00, 'Credit Card', '2024-08-05', 'Shipped'), (6, 6, 11, 2, 84000.00, 'Credit Card', '2024-08-06', 'Delivered'), (7, 7, 13, 1, 28000.00, 'PayPal', '2024-08-07', 'Pending'), (8, 8, 15, 3, 45000.00, 'Debit Card', '2024-08-08', 'Delivered'), (9, 9, 17, 1, 4500.00, 'Credit Card', '2024-08-09', 'Cancelled'), (10, 10, 19, 2, 23000.00, 'Credit Card', '2024-08-10', 'Shipped'), (11, 1, 21, 1, 38000.00, 'PayPal', '2024-08-11', 'Pending'), (12, 2, 23, 1, 14000.00, 'Debit Card', '2024-08-12', 'Delivered'), (13, 3, 25, 4, 11200.00, 'Credit Card', '2024-08-13', 'Shipped'), (14, 4, 27, 1, 9500.00, 'Cash on Delivery', '2024-08-14', 'Cancelled'), (15, 5, 29, 2, 90000.00, 'Credit Card', '2024-08-15', 'Delivered'), (16, 6, 31, 1, 19000.00, 'PayPal', '2024-08-16', 'Pending'), (17, 7, 33, 2, 48000.00, 'Credit Card', '2024-08-17', 'Shipped'), (18, 8, 35, 3, 84000.00, 'Debit Card', '2024-08-18', 'Delivered'), (19, 9, 37, 1, 4800.00, 'Credit Card', '2024-08-19', 'Pending'), (20, 10, 39, 1, 7500.00, 'PayPal', '2024-08-20', 'Cancelled'), (21, 1, 41, 2, 28000.00, 'Debit Card', '2024-08-21', 'Shipped'), (22, 2, 43, 4, 12000.00, 'Credit Card', '2024-08-22', 'Delivered'), (23, 3, 45, 2, 13000.00, 'Cash on Delivery', '2024-08-23', 'Cancelled'), (24, 4, 47, 1, 42000.00, 'PayPal', '2024-08-24', 'Shipped'), (25, 5, 49, 1, 62000.00, 'Credit Card', '2024-08-25', 'Delivered'), (26, 6, 2, 3, 165000.00, 'Debit Card', '2024-08-26', 'Pending'), (27, 7, 4, 1, 80000.00, 'Credit Card', '2024-08-27', 'Shipped'), (28, 8, 6, 2, 40000.00, 'Cash on Delivery', '2024-08-28', 'Cancelled'), (29, 9, 8, 1, 5000.00, 'PayPal', '2024-08-29', 'Shipped'), (30, 10, 10, 1, 65000.00, 'Credit Card', '2024-08-30', 'Delivered');
+Query OK, 30 rows affected (0.01 sec)
+Records: 30  Duplicates: 0  Warnings: 0
